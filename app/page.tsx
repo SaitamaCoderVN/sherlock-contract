@@ -45,43 +45,41 @@ export default function Home() {
   const redPercent = (teamStats.red / total) * 100;
 
   return (
-    <div className="h-screen overflow-hidden bg-black text-white p-4">
-      <header className="text-center mb-8">
-        <h1 className="text-3xl md:text-5xl font-bold mb-2 title-glitch">
-          <span className="blue-glow">BLUE</span>
-          <span className="mx-4">VS</span>
-          <span className="red-glow">RED</span>
-        </h1>
-        <p className="text-lg md:text-xl opacity-80">Smart Contract Security War</p>
-      </header>
+    <div className="min-h-screen bg-black text-white p-2 sm:p-4 overflow-x-hidden overflow-y-auto">
+      <div className="main-content">
+        <header className="text-center mb-4 sm:mb-8 pt-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 title-glitch">
+            <span className="blue-glow">BLUE</span>
+            <span className="mx-2 sm:mx-4">VS</span>
+            <span className="red-glow">RED</span>
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl opacity-80">Smart Contract Security War</p>
+        </header>
 
-      <div className="battle-container max-w-7xl mx-auto relative">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-10 transform -translate-x-1/2 rotate-45"></div>
+        <div className="battle-container max-w-7xl mx-auto relative px-2 sm:px-4 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 w-full">
+            <BlueTeam />
+            <RedTeam />
+          </div>
         </div>
-        
-        <div className="grid md:grid-cols-2 gap-4 relative z-10 w-full">
-          <BlueTeam />
-          <RedTeam />
+
+        <div className="max-w-3xl mx-auto px-2 sm:px-4 mb-8">
+          <div className="team-stats">
+            <div className="progress-flame" style={{ 
+              background: `linear-gradient(to right, 
+                rgba(10, 132, 255, 0.3) ${bluePercent}%, 
+                rgba(255, 59, 48, 0.3) ${bluePercent}% ${redPercent + bluePercent}%
+              )`
+            }} />
+            <span className="progress-text blue-text">{teamStats.blue} Members</span>
+            <span className="progress-text red-text">{teamStats.red} Members</span>
+          </div>
         </div>
+
+        <footer className="text-center text-xs sm:text-sm opacity-60 pb-4">
+          <p>Choose your side in the battle for smart contract security</p>
+        </footer>
       </div>
-
-      <div className="max-w-3xl mx-auto">
-        <div className="team-stats">
-          <div className="progress-flame" style={{ 
-            background: `linear-gradient(to right, 
-              rgba(10, 132, 255, 0.3) ${bluePercent}%, 
-              rgba(255, 59, 48, 0.3) ${bluePercent}% ${redPercent + bluePercent}%
-            )`
-          }} />
-          <span className="progress-text blue-text">{teamStats.blue} Members</span>
-          <span className="progress-text red-text">{teamStats.red} Members</span>
-        </div>
-      </div>
-
-      <footer className="text-center text-sm opacity-60">
-        <p>Choose your side in the battle for smart contract security</p>
-      </footer>
     </div>
   );
 }

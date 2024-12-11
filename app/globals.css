@@ -15,10 +15,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Orbitron', sans-serif;
-  overflow: hidden;
   background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(2,0,36,1) 100%);
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Hiệu ứng glitch cho text */
@@ -170,11 +171,11 @@ body {
 
 .battle-container {
   position: relative;
-  height: calc(100vh - 250px);
+  min-height: auto;
   padding: 1rem;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .battle-container::after {
@@ -190,13 +191,19 @@ body {
 
 .team-section {
   position: relative;
+  height: auto;
+  min-height: 400px;
+  max-height: none;
+  overflow: visible;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
   transform: scale(1);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border-radius: 12px;
-  margin: 0.5rem;
+  border-radius: 8px;
+  @media (min-width: 640px) {
+    border-radius: 12px;
+  }
   backdrop-filter: blur(10px);
-  height: 100%;
-  max-height: 500px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -280,12 +287,18 @@ body {
 
 .team-stats {
   position: relative;
-  height: 40px;
+  height: 32px;
+  @media (min-width: 640px) {
+    height: 40px;
+  }
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  @media (min-width: 640px) {
+    margin-top: 1rem;
+  }
 }
 
 .progress-flame {
@@ -313,7 +326,10 @@ body {
   top: 50%;
   transform: translateY(-50%);
   padding: 0 1rem;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  @media (min-width: 640px) {
+    font-size: 0.9rem;
+  }
   font-weight: bold;
   text-shadow: 0 0 10px currentColor;
   z-index: 1;
@@ -371,4 +387,15 @@ footer {
   left: 0;
   right: 0;
   text-align: center;
+}
+
+/* Thêm style cho container chính */
+.main-content {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 2rem;
 }
